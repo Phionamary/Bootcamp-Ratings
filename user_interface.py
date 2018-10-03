@@ -1,3 +1,5 @@
+from re import match
+
 print("\nWelcome to Bootcamp rating app.\n")
 print("To sign up Press: s")
 print("To login press: l")
@@ -6,7 +8,15 @@ option = input()
 
 
 def signup(username, email, password, account_type):
-    print(account_type)
+    if not bool(
+            match(
+                r"^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$",
+                email)):
+        print("Email is not valid. use example email soko@andela.com")
+
+    if len(password) < 5:
+        print(
+            "Password is too short. mut have atleats 5 characters")
 
 
 if option == "l":
