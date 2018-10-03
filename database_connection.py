@@ -5,7 +5,6 @@ class DatabaseConnection():
         self.connection = psycopg2.connect(
             database="postgres",
             user="postgres",
-            host="127.0.0.1",
             password=mypassword
         )
         self.cursor = self.connection.cursor()
@@ -27,6 +26,23 @@ class DatabaseConnection():
         self.connection.commit()
         print("User table created")
 
-password = input("Enter your password: ")
-user = DatabaseConnection(password)
+    def create_scores_table(self):
+       sql = (
+           '''
+           CREATE TABLE IF NOT EXISTS "Score"(
+               user_id INTEGER NOT NULL,
+               excellence INTEGER NOT NULL,
+               passion INTEGER NOT NULL,
+               integrity INTEGER NOT NULL,
+               collaboration INTEGER NOT NULL,
+               FOREIGN KEY(user_id) REFERENCES "User"(user_id) ON DELETE CASCADE
+           );
+           '''
+       )
+       self.cursor.execute(sql)
+       self.connection.commit()
+       print("Score table created")
+
+user = DatabaseConnection("maria")
 user.create_user_table()
+user.create_scores_table()
