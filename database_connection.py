@@ -92,10 +92,10 @@ user.signup(user_dict[1])
 score_dict = [
 	{
 		'user_id': 1,
-		'excellence': 1,
-		'passion': 1,
-		'integrity': 1,
-		'collaboration': 1
+		'excellence': 2,
+		'passion': 2,
+		'integrity': 2,
+		'collaboration': 2
 	}
 ]
 
