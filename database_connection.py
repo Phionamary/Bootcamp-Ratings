@@ -68,3 +68,34 @@ class DatabaseConnection():
 user = DatabaseConnection("maria")
 user.create_user_table()
 user.create_scores_table()
+
+
+
+user_dict = [
+	{
+		'username': 'Phiona',
+		'email': 'phiona@email.com',
+		'password': 'password',
+		'role': 'Bootcamper'
+	},
+	{
+		'username': 'Emma',
+		'email': 'emma@email.com',
+		'password': 'password',
+		'role': 'Bootcamper'
+	}]
+
+user.signup(user_dict[0])
+user.signup(user_dict[1])
+
+score_dict = [
+	{
+		'user_id': 1,
+		'excellence': 1,
+		'passion': 1,
+		'integrity': 1,
+		'collaboration': 1
+	}
+]
+
+user.rate_user(score_dict[0])
