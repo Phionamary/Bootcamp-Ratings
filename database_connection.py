@@ -1,11 +1,12 @@
 import psycopg2
 
 class DatabaseConnection():
-    def __init__(self, mypassword):
+    def __init__(self):
         self.connection = psycopg2.connect(
             database="postgres",
             user="postgres",
-            password=mypassword
+            host="127.0.0.1",
+            password="P@ss1234"
         )
         self.cursor = self.connection.cursor()
         print("Connected to database")
@@ -65,7 +66,7 @@ class DatabaseConnection():
     	self.connection.commit()
     	print ("score updated")
 
-user = DatabaseConnection("maria")
+user = DatabaseConnection()
 user.create_user_table()
 user.create_scores_table()
 
